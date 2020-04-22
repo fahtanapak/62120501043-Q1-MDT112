@@ -18,29 +18,13 @@ void setup()
 
 int n =1;
 int i =100;
+int x =1;
 void loop()
 {
   tone(8,200,500);
   delay(250);
   tone(8,400,100);
-  
-    if(digitalRead(2)==1)
-    {
-    if(digitalRead(2)==0)
-    {
-     Serial.println("Faster X 2 (Current Speed : X2)");
-        Serial.println(n);
-        n++;
-       i = i/(2*n);
-    i =i /2;
-    
-   }
-    else
-   {
-    i =100;
-   }
-   }
-   digitalWrite(3,1);
+  digitalWrite(3,1);
     delay(i);
     digitalWrite(3,0);
     digitalWrite(4,1);
@@ -96,6 +80,22 @@ void loop()
     digitalWrite(4,0);
     digitalWrite(3,1);
     delay(i);  
-    digitalWrite(3,0); 
+    digitalWrite(3,0);
+  
+       if (digitalRead(2)==0)
+        {
+          if (digitalRead(2)==1)
+          {
+            i =100;
+          }
+          else
+          {
+            n = x*2;
+            i =100/n;
+           Serial.println("Faster X 2 (Current Speed : X" + String(n)+")");
+           x++;
+          }
+        }
+  
     
 }
